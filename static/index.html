@@ -1,2 +1,98 @@
 <!doctype html>
-<a href="/static?pathname=hello_world.html">I&#039;m a link</a>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>trashoj</title>
+	</head>
+	<body>
+		<form method="post" action="/submit">
+			<fieldset>
+				<legend>Quick Submit</legend>
+				<input type="number" name="pid"/>
+				<fieldset>
+					<legend>Language</legend>
+					<input type="radio" name="lang" value="cpp11" id="qs-lang-cpp11"/>
+					<label for="qs-lang-cpp11">C++11: g++ -O2 -std=c++11</label>
+					<input type="radio" name="lang" value="pas" id="qs-lang-pas"/>
+					<label for="qs-lang-pas">Pascal: fpc</label>
+				</fieldset>
+				<textarea name="prog"></textarea>
+				<button type="submit">Submit</button>
+			</fieldset>
+		</form>
+		<iframe src="/problem_list"></iframe>
+		<form method="post" action="/add_problem" id="ap">
+			<fieldset>
+				<legend>New Problem</legend>
+				<textarea name="detail"></textarea>
+				<input type="file" name="inout" multiple=""/>
+				<button type="submit">Submit</button>
+			</fieldset>
+		</form>
+		<script>
+document.getElementById("ap").querySelector("button").disabled=false
+document.getElementById("ap").addEventListener("submit",function rf(e){
+	var ap=this
+	ap.removeEventListener("submit",rf)
+	ap.querySelector("button").disabled=true
+	e.preventDefault()
+	var fs=this.querySelector('input[name="inout"]')
+	fs.parentNode.removeChild(fs)
+	var f
+	var fi={}
+	var fo={}
+	var pos
+	for(f of fs.files)
+		if(/\.in$/.test(f.name)){
+			pos=/(\d+)/.exec(f.name)
+			if(pos)
+				fi[pos[1]]=f
+		}else if(/\.out$/.test(f.name)){
+			pos=/(\d+)/.exec(f.name)
+			if(pos)
+				fo[pos[1]]=f
+		}
+	var i
+	var ipms=[],opms=[]
+	for(i=1;fi[i];++i)(function(f){
+		ipms.push(new Promise(function(suc,fal){
+			var fr=new FileReader()
+			fr.onload=function(){
+				suc(this.result)
+			}
+			fr.readAsBinaryString(f)
+		}))
+	})(fi[i])
+	for(i=1;fo[i];++i)(function(f){
+		opms.push(new Promise(function(suc,fal){
+			var fr=new FileReader()
+			fr.onload=function(){
+				suc(this.result)
+			}
+			fr.readAsBinaryString(f)
+		}))
+	})(fo[i])
+	var tpms=[
+		new Promise(function(suc,fal){
+			Promise.all(ipms).then(suc)
+		}),
+		new Promise(function(suc,fal){
+			Promise.all(opms).then(suc)
+		})
+	]
+	Promise.all(tpms).then(function(farr){
+		var fobj={
+			"in":farr[0],
+			"out":farr[1]
+		}
+		var hd=document.createElement("input")
+		hd.type="hidden"
+		hd.name="inout"
+		hd.value=JSON.stringify(fobj)
+		ap.appendChild(hd)
+		ap.submit()
+	})
+})
+		</script>
+	</body>
+</html>
