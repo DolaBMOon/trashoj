@@ -8,8 +8,11 @@ this.trusty=this.trusty||{}
 this.trusty["static"]=(function(req,rep,param){
 
 var pn=param.pathname
-if(!pn) pn="index.html"
-if(/^\w+(?:\.\w+)?$/.test(pn)){
+if(!pn){
+	rep.writeHead(302,{"Location":"/static?pathname=index.html"})
+	rep.end()
+}
+else if(/^\w+(?:\.\w+)?$/.test(pn)){
 	pn="static/"+pn
 	fs.stat(pn,(function(err){
 		if(err)
