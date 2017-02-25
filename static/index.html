@@ -22,13 +22,14 @@
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
-		<iframe src="/problem_list"></iframe>
+		<iframe src="/problem_list" style="width:800px;height:600px;"></iframe>
 		<form method="post" action="/add_problem" id="ap">
 			<fieldset>
 				<legend>New Problem</legend>
 				<label for="ap-username">Name</label><input type="text" name="username" id="ap-username"/>
 				<label for="ap-useremail">Email</label><input type="email" name="useremail" id="ap-useremail"/>
 				<label for="ap-pid">Problem ID</label><input type="number" name="pid" id="ap-pid"/>
+				<label for="ap-title">Title</label><input type="text" name="title" id="ap-title"/>
 				<label for="ap-detail">Problem Detail</label><textarea name="detail" id="ap-detail"></textarea>
 				<label for="ap-inout">In file &amp; Out file</label><input type="file" name="inout" multiple="" id="ap-inout"/>
 				<button type="submit">Submit</button>

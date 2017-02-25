@@ -1,2 +1,18 @@
 {
+
+"problems":{
+
+	"1000":{
+		"username":"trashoj",
+		"useremail":"sweeto@live.cn",
+		"title":"A+B Problem",
+		"detail":"A+B Problem\n\nInput:\nA line with two integer, A, B. (0<A,B<10000)\n\nOutput:\nA line has one integer, the result of A+B\n\nSample Input:\n1 2\n\nSample Output:\n3\n",
+		"inout":{
+			"in":["1 2","3 4"],
+			"out":["3","7"]
+		}
+	}
+
+}
+
 }
