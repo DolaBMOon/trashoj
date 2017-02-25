@@ -9,7 +9,7 @@ this.trusty.add_problem=(function(req,rep,par){
 		"useremail":par.useremail,
 		"title":par.title,
 		"detail":par.detail,
-		"inout":par.inout
+		"inout":JSON.parse(par.inout)
 	}
 	if(!(/^\d+$/.test(par.pid))||this.db.problems[par.pid]&&(this.db.problems[par.pid].username!=prm.username||this.db.problems[par.pid].useremail!=prm.useremail)){
 		rep.writeHead(403,{"Content-Type":"text/plain"})
