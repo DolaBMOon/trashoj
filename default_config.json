@@ -1,0 +1,17 @@
+{
+
+"server":{
+	"port":1213
+},
+
+"save_cron":{
+	"interval":30000
+},
+
+"mime":{
+	"html":"text/html",
+	"js":"text/javascript",
+	"css":"text/css"
+}
+
+}
