@@ -8,7 +8,9 @@
 		<form method="post" action="/submit">
 			<fieldset>
 				<legend>Quick Submit</legend>
-				<input type="number" name="pid"/>
+				<label for="qs-username">Name</label><input type="text" name="username" id="qs-username"/>
+				<label for="qs-useremail">Email</label><input type="email" name="useremail" id="qs-useremail"/>
+				<label for="qs-pid">Problem ID</label><input type="number" name="pid" id="qs-pid"/>
 				<fieldset>
 					<legend>Language</legend>
 					<input type="radio" name="lang" value="cpp11" id="qs-lang-cpp11"/>
@@ -16,7 +18,7 @@
 					<input type="radio" name="lang" value="pas" id="qs-lang-pas"/>
 					<label for="qs-lang-pas">Pascal: fpc</label>
 				</fieldset>
-				<textarea name="prog"></textarea>
+				<label for="qs-prog">Program</label><textarea name="prog" id="qs-prog"></textarea>
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
@@ -24,8 +26,11 @@
 		<form method="post" action="/add_problem" id="ap">
 			<fieldset>
 				<legend>New Problem</legend>
-				<textarea name="detail"></textarea>
-				<input type="file" name="inout" multiple=""/>
+				<label for="ap-username">Name</label><input type="text" name="username" id="ap-username"/>
+				<label for="ap-useremail">Email</label><input type="email" name="useremail" id="ap-useremail"/>
+				<label for="ap-pid">Problem ID</label><input type="number" name="pid" id="ap-pid"/>
+				<label for="ap-detail">Problem Detail</label><textarea name="detail" id="ap-detail"></textarea>
+				<label for="ap-inout">In file &amp; Out file</label><input type="file" name="inout" multiple="" id="ap-inout"/>
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
