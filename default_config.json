@@ -12,6 +12,12 @@
 	"html":"text/html",
 	"js":"text/javascript",
 	"css":"text/css"
+},
+
+"judger":{
+	"lang":{
+		"cpp11":"g++ -xc++ - -pipe -O2 -std=c++11 -o %s"
+	}
 }
 
 }
