@@ -19,10 +19,10 @@ else if(req.method=="POST"){
 	})
 	req.addListener("end",function(){
 		var param=qs.parse(dataarr.join(''))
-		fx(req,rep,param)
+		try{fx(req,rep,param)}catch(err){}
 	})
 }else if(req.method=="GET"){
-	fx(req,rep,ul.query)
+	try{fx(req,rep,ul.query)}catch(err){}
 }else fallback.call(this.req,rep)
 
 }).bind(this)).listen(this.config.server.port)

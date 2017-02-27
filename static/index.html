@@ -49,7 +49,7 @@ document.getElementById("ap").addEventListener("submit",function rf(e){
 	var fi={}
 	var fo={}
 	var pos
-	for(f of fs.files)
+	for(f of Array.from(fs.files))
 		if(/\.in$/.test(f.name)){
 			pos=/(\d+)/.exec(f.name)
 			if(pos)
