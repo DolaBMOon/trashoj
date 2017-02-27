@@ -8,17 +8,17 @@
 		<form method="post" action="/submit">
 			<fieldset>
 				<legend>Quick Submit</legend>
-				<label for="qs-username">Name</label><input type="text" name="username" id="qs-username"/>
-				<label for="qs-useremail">Email</label><input type="email" name="useremail" id="qs-useremail"/>
-				<label for="qs-pid">Problem ID</label><input type="number" name="pid" id="qs-pid"/>
+				<label for="qs-username">Name</label><input required type="text" name="username" id="qs-username"/>
+				<label for="qs-useremail">Email</label><input required type="email" name="useremail" id="qs-useremail"/>
+				<label for="qs-pid">Problem ID</label><input required type="number" name="pid" id="qs-pid"/>
 				<fieldset>
 					<legend>Language</legend>
-					<input type="radio" name="lang" value="cpp11" id="qs-lang-cpp11"/>
+					<input required type="radio" name="lang" value="cpp11" id="qs-lang-cpp11"/>
 					<label for="qs-lang-cpp11">C++11: g++ -xc++ -pipe -O2 -std=c++11</label>
-					<input type="radio" name="lang" value="pas" id="qs-lang-pas" disabled=""/>
+					<input required type="radio" name="lang" value="pas" id="qs-lang-pas" disabled=""/>
 					<label for="qs-lang-pas">Pascal: fpc</label>
 				</fieldset>
-				<label for="qs-prog">Program</label><textarea name="prog" id="qs-prog"></textarea>
+				<label for="qs-prog">Program</label><textarea required name="prog" id="qs-prog"></textarea>
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
@@ -26,15 +26,16 @@
 		<form method="post" action="/add_problem" id="ap">
 			<fieldset>
 				<legend>New Problem</legend>
-				<label for="ap-username">Name</label><input type="text" name="username" id="ap-username"/>
-				<label for="ap-useremail">Email</label><input type="email" name="useremail" id="ap-useremail"/>
-				<label for="ap-pid">Problem ID</label><input type="number" name="pid" id="ap-pid"/>
-				<label for="ap-title">Title</label><input type="text" name="title" id="ap-title"/>
-				<label for="ap-detail">Problem Detail</label><textarea name="detail" id="ap-detail"></textarea>
-				<label for="ap-inout">In file &amp; Out file</label><input type="file" name="inout" multiple="" id="ap-inout"/>
+				<label for="ap-username">Name</label><input required type="text" name="username" id="ap-username"/>
+				<label for="ap-useremail">Email</label><input required type="email" name="useremail" id="ap-useremail"/>
+				<label for="ap-pid">Problem ID</label><input required type="number" name="pid" id="ap-pid"/>
+				<label for="ap-title">Title</label><input required type="text" name="title" id="ap-title"/>
+				<label for="ap-detail">Problem Detail</label><textarea required name="detail" id="ap-detail"></textarea>
+				<label for="ap-inout">In file &amp; Out file</label><input required type="file" name="inout" multiple="" id="ap-inout"/>
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
+		<a href="/static?pathname=talk.html">Talk</a>
 		<script>
 document.getElementById("ap").querySelector("button").disabled=false
 document.getElementById("ap").addEventListener("submit",function rf(e){
